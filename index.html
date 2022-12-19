@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <!-- リセットCSS -->
+  <link rel="stylesheet" href ="https://cdn.skypack.dev/sanitize.css">
+  <!-- スタイルシート　-->
+  <link rel="stylesheet" href="css/style.css">
+  <!-- GoogleFont -->
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=DotGothic16&display=swap" rel="stylesheet">
+  <!-- JS -->
+  <script src="js/main.js"></script>
+  <title>CistAttendanceCard</title>
+</head>
+
+<body>
+  <div class="header-img"></div>
+  <h2>公立千歳科学技術大学　出席カードジェネレーター</h2>
+  <p>各項目を入力してください</p>
+
+  <form action="" method="post" id="form">
+
+    <div class="input-form">
+      <!-- 日時 -->
+      <div id="date-field">
+        <label for="input-date">日時</label>
+        <input type="date" name="date" id="input-date" required>
+      </div>
+
+      <!-- 科目名 -->
+      <div id="subject-name-field">
+        <label for="input-subject-name">科目名</label>
+        <input type="text" name="subject-name" id="input-subject-name" required>
+      </div>
+
+      <!-- 教員名 -->
+      <div id="teacher-name-field">
+        <label for="input-teacher-name">教員名</label>
+        <input type="text" name="teacher-name" id="input-teacher-name" required>
+      </div>
+
+      <!-- 学科名 -->
+      <div id="course-name-field">
+        <label for="input-course-name">学科名</label>
+        <select name="course-name" id="input-course-name" required>
+          <option value="" selected>選択してください</option>
+          <option value="bm">バイオ・マテリアル学科</option>
+          <option value="os">光システム学科</option>
+          <option value="gsd">グローバルシステムデザイン学科</option>
+          <option value="acb">応用化学生物学科</option>
+          <option value="oese">電子光工学科</option>
+          <option value="ise">情報システム工学科</option>
+        </select>
+      </div>
+
+
+      <!-- 学年 -->
+      <div id="school-year-field">
+        <label for="school-year">学年</label>
+        <select name="school-year" id="school-year" required>
+          <option value="" selected>選択してください</option>
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+        </select>
+      </div>
+
+      <!-- クラス -->
+      <div id="school-class-field">
+        <label for="school-class">クラス</label>
+        <select name="school-class" id="school-class" required>
+          <option value="" selected>選択してください</option>
+          <option value="A">A</option>
+          <option value="B">B</option>
+          <option value="C">C</option>
+        </select>
+      </div>
+
+      <!-- 出席番号 -->
+      <div id="attendance-number-field">
+        <label for="input-attendance-number">出席番号</label>
+        <input type="number" name="attendance-number" id="input-attendance-number" required>
+      </div>
+
+      <!-- 学籍番号 -->
+      <div id="student-number-field">
+        <label for="input-student-number">学籍番号</label>
+        <input type="text" name="student-number" id="input-student-number" required>
+      </div>
+
+      <!-- 氏名 -->
+      <div id="student-name">
+        <label for="input-student-name">氏名</label>
+        <input type="text" name="student-name" id="input-student-name" required>
+      </div>
+
+    </div>
+
+    <div class="attendance-card">
+      <canvas id="canvas001" width="480" height="240">
+        おつかいのブラウザでは表示できません。
+      </canvas>
+    </div>
+
+
+    <div class="download-button">
+      <button type="button" id="download" onclick="buttonDownload()" disabled>ダウンロード</button>
+    </div>
+
+  </form>
+
+  <footer class="footer">
+    <div class="footer-line"></div>
+    <p class="copyright">
+      © 2022 reo-satooooo
+    </p>
+  </footer>
+</body>
+</html>
