@@ -186,8 +186,25 @@ window.onload = function () {
 
     if (isRequired) {
       button.disabled = false;
+      button.style.opacity = 1;
+      button:hover.style.opacity = 0.7;
+      button.style.cursor = "pointer";
       return
     }
+  }
+
+  //ボタン処理
+  const downloadButton = document.getElementById("download");
+  downloadButton.addEventListener('click',buttonDownload)
+  function buttonDownload(){
+    const date = localStorage.getItem('date');
+    const studentNumber = localStorage.getItem('studentNumber');
+    const fileName = ("attendance_card_" + date + "_" + studentNumber);
+    const canvasElement = document.getElementById("canvas001");
+    var a = document.createElement('a');
+    a.href = canvasElement.toDataURL("image/jpeg",0.75);
+    a.download = fileName+'.jpg';
+    a.click();
   }
 
 };
@@ -205,7 +222,6 @@ function inputDateChange(event){
     contextDateArea.fillStyle = '#000000';
     contextDateArea.font = '9pt sans-serif';
     contextDateArea.fillText(event.currentTarget.value,65,75);
-    console.log(dateValue.value);
   }  
 }
 
@@ -222,7 +238,6 @@ function inputSubjectNameChange(event){
     contextSubjectNameArea.fillStyle = '#000000';
     contextSubjectNameArea.font = '9pt sans-serif';
     contextSubjectNameArea.fillText(event.currentTarget.value,65,125);
-    console.log(subjectNameValue.value);
   }
 }
 
@@ -239,7 +254,6 @@ function inputTeacherNameChange(event){
     contextTeacherNameArea.fillStyle = '#000000';
     contextTeacherNameArea.font = '9pt sans-serif';
     contextTeacherNameArea.fillText(event.currentTarget.value,65,185);
-    console.log(teacherNameValue.value);
   }
 }
 
@@ -295,8 +309,6 @@ function inputCourseNameChange(event){
     contextCourseNameArea.font = '5.3pt sans-serif';
     contextCourseNameArea.fillText('情報システム工',402,83);
 
-    console.log(courseNameValue.value);
-
     // 学科毎の分岐でチェックをつける
     if(courseNameValue.value == 'bm'){//バイオマテリアル
       contextCourseNameArea.clearRect(261,51,65,18);
@@ -307,7 +319,6 @@ function inputCourseNameChange(event){
       contextCourseNameArea.fillText('バイオ・マテリアル',262,63);
       contextCourseNameArea.font = '12pt sans-serif';
       contextCourseNameArea.fillText('◎',287,67);
-      console.log(courseNameValue.value);
     }
     else if(courseNameValue.value == 'os'){//光システム
       contextCourseNameArea.clearRect(328,51,65,18);
@@ -318,7 +329,6 @@ function inputCourseNameChange(event){
       contextCourseNameArea.fillText('光システム',342,63);
       contextCourseNameArea.font = '12pt sans-serif';
       contextCourseNameArea.fillText('◎',352,67);
-      console.log(courseNameValue.value);
     }
     else if(courseNameValue.value == 'gsd'){//GSD
       contextCourseNameArea.clearRect(394,51,65,18);
@@ -351,7 +361,6 @@ function inputCourseNameChange(event){
       contextCourseNameArea.fillText('電子光工',345,83);
       contextCourseNameArea.font = '12pt sans-serif';
       contextCourseNameArea.fillText('◎',352,87);
-      console.log(courseNameValue.value);
     }
     else if(courseNameValue.value == 'ise'){//情シス
       contextCourseNameArea.clearRect(394,71,65,18);
@@ -362,7 +371,6 @@ function inputCourseNameChange(event){
       contextCourseNameArea.fillText('情報システム工',402,83);
       contextCourseNameArea.font = '12pt sans-serif';
       contextCourseNameArea.fillText('◎',417,87);
-      console.log(courseNameValue.value);
     }
   }
 }
@@ -380,7 +388,6 @@ function inputSchoolYearChange(event){
     contextSchoolYearArea.fillStyle = '#000000';
     contextSchoolYearArea.font = '9pt sans-serif';
     contextSchoolYearArea.fillText(event.currentTarget.value,276,115);
-    console.log(schoolYearValue.value);
   }
 }
 
@@ -397,7 +404,6 @@ function inputSchoolClassChange(event){
     contextClassArea.fillStyle = '#000000';
     contextClassArea.font = '9pt sans-serif';
     contextClassArea.fillText(event.currentTarget.value,356,115);
-    console.log(schoolClassValue.value);
   }
 }
 
@@ -414,7 +420,6 @@ function inputAttendanceNumberChange(event){
     contextAttendanceNumberArea.fillStyle = '#000000';
     contextAttendanceNumberArea.font = '9pt sans-serif';
     contextAttendanceNumberArea.fillText(event.currentTarget.value,432,115);
-    console.log(attendanceNumberValue.value);
   }
 }
 
@@ -431,7 +436,6 @@ function inputStudentNumberChange(event){
     contextStudentNumberArea.fillStyle = '#000000';
     contextStudentNumberArea.font = '9pt sans-serif';
     contextStudentNumberArea.fillText(event.currentTarget.value,265,155);
-    console.log(studentNumberValue.value);
   }
 }
 
@@ -448,19 +452,18 @@ function inputStudentNameChange(event){
     contextStudentNameArea.fillStyle = '#000000';
     contextStudentNameArea.font = '9pt sans-serif';
     contextStudentNameArea.fillText(event.currentTarget.value,265,195);
-    console.log(studentNameValue.value);
   }
 }
 
 // ボタン処理
-function buttonDownload(){
-  console.log("動作確認");
-  const date = localStorage.getItem('date');
-  const studentNumber = localStorage.getItem('studentNumber');
-  const fileName = ("attendance_card_" + date + "_" + studentNumber);
-  const canvasElement = document.getElementById("canvas001");
-  var a = document.createElement('a');
-  a.href = canvasElement.toDataURL("image/jpeg",0.75);
-  a.download = fileName+'.jpg';
-  a.click();
-}
+// function buttonDownload(){
+//   const button = document.getElementById("download");
+//   const date = localStorage.getItem('date');
+//   const studentNumber = localStorage.getItem('studentNumber');
+//   const fileName = ("attendance_card_" + date + "_" + studentNumber);
+//   const canvasElement = document.getElementById("canvas001");
+//   var a = document.createElement('a');
+//   a.href = canvasElement.toDataURL("image/jpeg",0.75);
+//   a.download = fileName+'.jpg';
+//   a.click();
+// }
