@@ -187,7 +187,6 @@ window.onload = function () {
     if (isRequired) {
       button.disabled = false;
       button.style.opacity = 1;
-      button:hover.style.opacity = 0.7;
       button.style.cursor = "pointer";
       return
     }
